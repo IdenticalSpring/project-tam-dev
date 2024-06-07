@@ -1,0 +1,10 @@
+<!-- delete-blog.component.html -->
+<div class="modal" *ngIf="isVisible">
+  <div class="modal-content">
+    <span class="close" (click)="closeModal()">&times;</span>
+    <h2>{{ modalTitle }}</h2>
+    <p>Are you sure you want to delete the blog "{{ blog.name }}"?</p>
+    <button class="btn btn-danger" (click)="confirmDelete()">Delete</button>
+    <button class="btn btn-secondary" (click)="closeModal()">Cancel</button>
+  </div>
+</div>

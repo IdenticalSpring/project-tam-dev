@@ -1,0 +1,37 @@
+<div class="modal" [ngClass]="{ 'is-active': isVisible }">
+  <div class="modal-background" (click)="onClose()"></div>
+  <div class="modal-content">
+    <div class="box">
+      <h1 class="title">{{ modalTitle }}</h1>
+      <form (ngSubmit)="onSave()">
+        <div class="field">
+          <label class="label">Name</label>
+          <div class="control">
+            <input class="input" type="text" [(ngModel)]="category.name" name="name" required>
+          </div>
+        </div>
+        <div class="field">
+          <label class="label">Image URL</label>
+          <div class="control">
+            <input class="input" type="text" [(ngModel)]="category.image" name="image" required>
+          </div>
+        </div>
+        <div class="field">
+          <label class="label">Parent Category</label>
+          <div class="control">
+            <input class="input" type="text" [(ngModel)]="category.parent" name="parent">
+          </div>
+        </div>
+        <div class="field is-grouped">
+          <div class="control">
+            <button class="button is-link" type="submit">Save</button>
+          </div>
+          <div class="control">
+            <button class="button is-light" type="button" (click)="onClose()">Cancel</button>
+          </div>
+        </div>
+      </form>
+    </div>
+  </div>
+  <button class="modal-close is-large" aria-label="close" (click)="onClose()"></button>
+</div>

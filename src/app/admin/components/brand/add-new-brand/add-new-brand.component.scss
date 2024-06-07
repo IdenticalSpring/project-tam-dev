@@ -1,0 +1,31 @@
+.modal-content {
+  max-width: 500px;
+  margin: 0 auto;
+}
+
+.field {
+  margin-bottom: 20px;
+}
+
+.button.is-link {
+  background-color: #007bff;
+  border-color: #007bff;
+  color: white;
+}
+
+.button.is-link:hover {
+  background-color: #0056b3;
+  border-color: #0056b3;
+}
+
+.button.is-light {
+  background-color: #f2f2f2;
+  border-color: #f2f2f2;
+  color: #333;
+}
+
+.button.is-light:hover {
+  background-color: #e2e2e2;
+  border-color: #e2e2e2;
+  color: #333;
+}

@@ -1,0 +1,23 @@
+<!-- app.component.html -->
+<div class="main-section">
+  <!-- BEGIN HEADER -->
+  <app-header-admin (sidebarToggle)="toggleSidebar()"></app-header-admin>
+  <!-- END HEADER -->
+
+  <div class="main-container">
+    <!-- BEGIN SIDEBAR TOGGLE BUTTON -->
+    <button class="sidebar-toggle-button" *ngIf="isCollapsed" (click)="toggleSidebar()">☰</button>
+    <!-- END SIDEBAR TOGGLE BUTTON -->
+
+    <!-- BEGIN SIDEBAR -->
+    <app-sidebar-admin [isCollapsed]="isCollapsed"></app-sidebar-admin>
+    <!-- END SIDEBAR -->
+
+    <!-- BEGIN CONTENT AREA -->
+    <div class="content-area">
+      <router-outlet></router-outlet>
+    </div>
+    <!-- END CONTENT AREA -->
+  </div>
+  <footer></footer>
+</div>

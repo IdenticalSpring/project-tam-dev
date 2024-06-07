@@ -1,0 +1,68 @@
+/* app.component.css */
+html, body {
+  height: 100%;
+  margin: 0;
+  padding: 0;
+}
+
+body {
+  display: flex;
+  flex-direction: column;
+}
+
+.main-section {
+  display: flex;
+  flex-direction: column;
+  flex-grow: 1;
+}
+
+.header {
+  width: 100%;
+  position: fixed;
+  top: 0;
+  left: 0;
+  z-index: 1000;
+  height: 60px; /* Set to the height of your header */
+}
+
+.main-container {
+  display: flex;
+  flex-direction: row;
+  flex-grow: 1;
+  margin-top: 60px; /* Adjust this based on the header height */
+}
+
+.sidebar-toggle-button {
+  display: none;
+  position: fixed;
+  top: 70px; /* Adjust this based on the header height */
+  left: 10px;
+  background-color: #444;
+  color: #fff;
+  border: none;
+  padding: 10px;
+  cursor: pointer;
+  z-index: 1001;
+}
+
+.sidebar-toggle-button:hover {
+  background-color: #575757;
+}
+
+.content-area {
+  flex-grow: 1;
+  padding: 20px;
+  background-color: white;
+  margin-left: 250px; /* Adjust this based on sidebar width */
+  height: calc(100vh - 110px); /* Ensure it takes all remaining height */
+}
+
+@media (max-width: 768px) {
+  .content-area {
+    margin-left: 0;
+  }
+
+  .sidebar-toggle-button {
+    display: block;
+  }
+}
