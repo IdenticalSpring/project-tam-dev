@@ -1,19 +1,19 @@
 import { Component, Input, Output, EventEmitter } from '@angular/core';
 
 @Component({
-  selector: 'app-delete-blog',
-  templateUrl: './delete-blog.component.html',
-  styleUrls: ['./delete-blog.component.scss']
+  selector: 'app-delete-order',
+  templateUrl: './delete-order.component.html',
+  styleUrls: ['./delete-order.component.scss']
 })
-export class DeleteBlogComponent {
-  @Input() blog: any = {};
+export class DeleteOrderComponent {
+  @Input() order: any = {};
   @Input() modalTitle: string = '';
   @Input() isVisible: boolean = false;
   @Output() delete = new EventEmitter<number>();
   @Output() close = new EventEmitter<void>();
 
   confirmDelete() {
-    this.delete.emit(this.blog.id);
+    this.delete.emit(this.order.id);
   }
 
   closeModal() {

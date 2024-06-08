@@ -7,8 +7,8 @@ import { Component } from '@angular/core';
 })
 export class CategoryAdminPageComponent {
   categories = [
-    { id: 1, name: 'Category 1', image: '/assets/images/category1.jpg', parent: 'Parent 1', selected: false },
-    { id: 2, name: 'Category 2', image: '/assets/images/category2.jpg', parent: 'Parent 2', selected: false }
+    { id: 1, name: 'Category 1', image: '/assets/images/product1.jpg', content: 'Content of Product 1', selected: false },
+    { id: 2, name: 'Product 2', image: '/assets/images/product2.jpg', content: 'Content of Product 2', selected: false }
   ];
 
   selectedCategory: any = {};
@@ -17,6 +17,9 @@ export class CategoryAdminPageComponent {
   showDetailCategoryModal: boolean = false;
   showUpdateCategoryModal: boolean = false;
   showDeleteCategoryModal: boolean = false;
+  currentPage: number = 1;
+  totalPages: number = 5;
+  pageName: string = 'categories';
 
   toggleSelectAll() {
     const allSelected = this.categories.every(category => category.selected);
@@ -24,7 +27,7 @@ export class CategoryAdminPageComponent {
   }
 
   openAddNewCategoryModal() {
-    this.selectedCategory = { id: null, name: '', image: '', parent: '', selected: false };
+    this.selectedCategory = { id: null, name: '', image: '', content: '', selected: false };
     this.modalTitle = 'Create Category';
     this.showAddNewCategoryModal = true;
   }
@@ -41,7 +44,7 @@ export class CategoryAdminPageComponent {
       category.id = this.categories.length + 1;
       this.categories.push(category);
     } else {
-      const index = this.categories.findIndex(c => c.id === category.id);
+      const index = this.categories.findIndex(p => p.id === category.id);
       this.categories[index] = category;
     }
     this.closeModal();
@@ -49,6 +52,7 @@ export class CategoryAdminPageComponent {
 
   viewCategory(id: number) {
     const category = this.categories.find(c => c.id === id);
+    console.log("Category", category)
     this.selectedCategory = { ...category };
     this.modalTitle = 'View Category';
     this.showDetailCategoryModal = true;
@@ -58,7 +62,7 @@ export class CategoryAdminPageComponent {
     const category = this.categories.find(c => c.id === id);
     this.selectedCategory = { ...category };
     this.modalTitle = 'Edit Category';
-    this.showUpdateCategoryModal = true;
+    this.showUpdateCategoryModal  = true;
   }
 
   deleteCategory(id: number) {
@@ -73,12 +77,14 @@ export class CategoryAdminPageComponent {
   }
 
   prevPage() {
-    console.log('Previous page');
-    // Add your pagination logic here
+    if (this.currentPage > 1) {
+      this.currentPage--;
+    }
   }
 
   nextPage() {
-    console.log('Next page');
-    // Add your pagination logic here
+    if (this.currentPage < this.totalPages) {
+      this.currentPage++;
+    }
   }
 }

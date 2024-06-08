@@ -1,30 +1,22 @@
-import { Component, Input, Output, EventEmitter, OnChanges, SimpleChanges } from '@angular/core';
+import { Component, Input, Output, EventEmitter } from '@angular/core';
 
 @Component({
   selector: 'app-update-blog',
   templateUrl: './update-blog.component.html',
   styleUrls: ['./update-blog.component.scss']
 })
-export class UpdateBlogComponent implements OnChanges {
+export class UpdateBlogComponent {
   @Input() blog: any = {};
   @Input() modalTitle: string = '';
   @Input() isVisible: boolean = false;
-  @Output() save: EventEmitter<any> = new EventEmitter();
-  @Output() close: EventEmitter<void> = new EventEmitter();
+  @Output() save = new EventEmitter<any>();
+  @Output() close = new EventEmitter<void>();
 
-  ngOnChanges(changes: SimpleChanges) {
-    if (changes['isVisible']) {
-      this.isVisible = changes['isVisible'].currentValue;
-    }
+  saveBlog() {
+    this.save.emit(this.blog);
   }
 
   closeModal() {
-    this.isVisible = false;
     this.close.emit();
-  }
-
-  submitForm() {
-    this.save.emit(this.blog);
-    this.closeModal();
   }
 }

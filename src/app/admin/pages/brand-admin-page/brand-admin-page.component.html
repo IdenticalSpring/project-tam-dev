@@ -1,15 +1,16 @@
 <div class="container">
   <div class="header">
-    <h1>View All Brands</h1>
+    <h1>View All brands</h1>
     <div class="address-bar">
-      <span>Admin/{{ pageName }}</span>
-    </div>
+      <span>Admin/
+
+      </span>
+        </div>
     <div class="tool-bar">
-      <input type="text" class="search-bar" placeholder="Search for..." />
+      <input type="text" class="search-bar" placeholder="Search for..."  />
       <button class="create-button" (click)="openAddNewBrandModal()">Create New Brand</button>
     </div>
   </div>
-
   <div class="table-container">
     <table class="table">
       <thead>
@@ -28,13 +29,13 @@
           <td><img [src]="brand.image" alt="{{ brand.name }}" class="thumbnail"></td>
           <td>{{ brand.name }}</td>
           <td>
-            <button class="view-button" (click)="viewBrand(brand.id)">
+            <button class="icon-button view-button" (click)="viewBrand(brand.id)">
               <i class="bi bi-eye"></i> View
             </button>
-            <button class="edit-button" (click)="editBrand(brand.id)">
+            <button class="icon-button edit-button" (click)="editBrand(brand.id)">
               <i class="bi bi-pencil"></i> Edit
             </button>
-            <button class="delete-button" (click)="deleteBrand(brand.id)">
+            <button class="icon-button delete-button" (click)="deleteBrand(brand.id)">
               <i class="bi bi-trash"></i> Delete
             </button>
           </td>
@@ -79,7 +80,6 @@
   [isVisible]="showDetailBrandModal"
   (close)="closeModal()">
 </app-detail-brand>
-
 <app-update-brand
   [brand]="selectedBrand"
   [modalTitle]="modalTitle"
@@ -88,10 +88,10 @@
   (close)="closeModal()">
 </app-update-brand>
 
-<!-- <app-delete-brand
+<app-delete-brand
   [brand]="selectedBrand"
   [modalTitle]="modalTitle"
   [isVisible]="showDeleteBrandModal"
   (delete)="confirmDelete($event)"
   (close)="closeModal()">
-</app-delete-brand> -->
+</app-delete-brand> 

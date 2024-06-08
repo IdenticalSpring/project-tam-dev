@@ -1,15 +1,16 @@
 <div class="container">
   <div class="header">
-    <h1>View All Brands</h1>
+    <h1>View All Categories</h1>
     <div class="address-bar">
-      <span>Admin/categories</span>
-    </div>
+      <span>Admin/
+
+      </span>
+        </div>
     <div class="tool-bar">
-      <input type="text" class="search-bar" placeholder="Search for..." />
-      <button class="create-button" (click)="openAddNewCategoryModal()">Create New Brand</button>
+      <input type="text" class="search-bar" placeholder="Search for..."  />
+      <button class="create-button" (click)="openAddNewCategoryModal()">Create New Category</button>
     </div>
   </div>
-
   <div class="table-container">
     <table class="table">
       <thead>
@@ -18,7 +19,6 @@
           <th style="width: 10%;">ID</th>
           <th style="width: 15%;">Image</th>
           <th style="width: 30%;">Name</th>
-          <th style="width: 20%;">Parent Category</th>
           <th style="width: 20%;">Actions</th>
         </tr>
       </thead>
@@ -28,7 +28,6 @@
           <td>{{ category.id }}</td>
           <td><img [src]="category.image" alt="{{ category.name }}" class="thumbnail"></td>
           <td>{{ category.name }}</td>
-          <td>{{ category.parent }}</td>
           <td>
             <button class="icon-button view-button" (click)="viewCategory(category.id)">
               <i class="bi bi-eye"></i> View
@@ -54,7 +53,7 @@
       </svg>
     </button>
     <button class="page-number">
-      <!-- {{ currentPage }} -->
+      {{ currentPage }}
     </button>
     <button class="arrow-button" (click)="nextPage()">
       <svg fill="#007bff" height="10px" width="10px" version="1.1" id="Layer_1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink"
@@ -67,13 +66,13 @@
   </div>
 </div>
 
-<!-- <app-add-new-category
+<app-add-new-category
   [category]="selectedCategory"
   [modalTitle]="modalTitle"
   [isVisible]="showAddNewCategoryModal"
   (save)="saveCategory($event)"
-  (close)="closeModal()">
-</app-add-new-category> -->
+  (close)="closeModal()">      
+</app-add-new-category>
 
 <app-detail-category
   [category]="selectedCategory"
@@ -94,6 +93,6 @@
   [category]="selectedCategory"
   [modalTitle]="modalTitle"
   [isVisible]="showDeleteCategoryModal"
-  (confirmDelete)="confirmDelete($event)"
+  (delete)="confirmDelete($event)"
   (close)="closeModal()">
-</app-delete-category>
+</app-delete-category> 

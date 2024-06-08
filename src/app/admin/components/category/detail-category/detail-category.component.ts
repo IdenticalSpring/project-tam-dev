@@ -11,7 +11,7 @@ export class DetailCategoryComponent {
   @Input() isVisible: boolean = false;
   @Output() close = new EventEmitter<void>();
 
-  onClose() {
+  closeModal() {
     this.close.emit();
   }
 }

@@ -7,8 +7,8 @@ import { Component } from '@angular/core';
 })
 export class BrandAdminPageComponent {
   brands = [
-    { id: 1, name: 'Brand 1', image: '/assets/images/brand1.jpg', content: 'Content of Brand 1', selected: false },
-    { id: 2, name: 'Brand 2', image: '/assets/images/brand2.jpg', content: 'Content of Brand 2', selected: false }
+    { id: 1, name: 'Brands 1', image: '/assets/images/brand1.jpg', content: 'Content of brand 1', selected: false },
+    { id: 2, name: 'Brands 2', image: '/assets/images/brand2.jpg', content: 'Content of brand 2', selected: false }
   ];
 
   selectedBrand: any = {};
@@ -28,7 +28,7 @@ export class BrandAdminPageComponent {
 
   openAddNewBrandModal() {
     this.selectedBrand = { id: null, name: '', image: '', content: '', selected: false };
-    this.modalTitle = 'Create Brand';
+    this.modalTitle = 'Create brand';
     this.showAddNewBrandModal = true;
   }
 
@@ -40,40 +40,39 @@ export class BrandAdminPageComponent {
   }
 
   saveBrand(brand: any) {
-    if (this.modalTitle === 'Create Brand') {
+    if (this.modalTitle === 'Create brand') {
       brand.id = this.brands.length + 1;
       this.brands.push(brand);
     } else {
-      const index = this.brands.findIndex(b => b.id === brand.id);
-      if (index !== -1) {
-        this.brands[index] = brand;
-      }
+      const index = this.brands.findIndex(p => p.id === brand.id);
+      this.brands[index] = brand;
     }
     this.closeModal();
   }
 
   viewBrand(id: number) {
-    const brand = this.brands.find(b => b.id === id);
+    const brand = this.brands.find(p => p.id === id);
+    console.log("brand",brand)
     this.selectedBrand = { ...brand };
-    this.modalTitle = 'View Brand';
+    this.modalTitle = 'View brand';
     this.showDetailBrandModal = true;
   }
 
   editBrand(id: number) {
-    const brand = this.brands.find(b => b.id === id);
+    const brand = this.brands.find(p => p.id === id);
     this.selectedBrand = { ...brand };
-    this.modalTitle = 'Edit Brand';
+    this.modalTitle = 'Edit brand';
     this.showUpdateBrandModal = true;
   }
 
   deleteBrand(id: number) {
-    this.selectedBrand = this.brands.find(b => b.id === id);
-    this.modalTitle = 'Delete Brand';
+    this.selectedBrand = this.brands.find(p => p.id === id);
+    this.modalTitle = 'Delete brand';
     this.showDeleteBrandModal = true;
   }
 
   confirmDelete(id: number) {
-    this.brands = this.brands.filter(b => b.id !== id);
+    this.brands = this.brands.filter(p => p.id !== id);
     this.closeModal();
   }
 
@@ -87,9 +86,5 @@ export class BrandAdminPageComponent {
     if (this.currentPage < this.totalPages) {
       this.currentPage++;
     }
-  }
-
-  onSearch(searchTerm: string) {
-    console.log('Search term:', searchTerm);
   }
 }

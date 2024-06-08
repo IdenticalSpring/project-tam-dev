@@ -1,4 +1,4 @@
-import { Component, EventEmitter, Input, Output } from '@angular/core';
+import { Component, Input, Output, EventEmitter } from '@angular/core';
 
 @Component({
   selector: 'app-add-new-category',
@@ -6,17 +6,17 @@ import { Component, EventEmitter, Input, Output } from '@angular/core';
   styleUrls: ['./add-new-category.component.scss']
 })
 export class AddNewCategoryComponent {
-  @Input() modalTitle!: string;
-  @Input() isVisible!: boolean;
   @Input() category: any = {};
+  @Input() modalTitle: string = '';
+  @Input() isVisible: boolean = false;
   @Output() save = new EventEmitter<any>();
   @Output() close = new EventEmitter<void>();
 
-  onSave() {
+  saveCategory() {
     this.save.emit(this.category);
   }
 
-  onClose() {
+  closeModal() {
     this.close.emit();
   }
 }

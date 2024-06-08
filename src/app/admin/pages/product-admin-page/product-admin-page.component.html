@@ -8,7 +8,7 @@
         </div>
     <div class="tool-bar">
       <input type="text" class="search-bar" placeholder="Search for..."  />
-      <button class="create-button" (click)="openAddNewProductModal()">Create New Blog</button>
+      <button class="create-button" (click)="openAddNewProductModal()">Create New Product</button>
     </div>
   </div>
   <div class="table-container">
@@ -53,7 +53,7 @@
       </svg>
     </button>
     <button class="page-number">
-      <!-- {{ currentPage }} -->
+      {{ currentPage }}
     </button>
     <button class="arrow-button" (click)="nextPage()">
       <svg fill="#007bff" height="10px" width="10px" version="1.1" id="Layer_1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink"

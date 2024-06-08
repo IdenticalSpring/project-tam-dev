@@ -1,16 +1,16 @@
 <div class="container">
-
   <div class="header">
-    <h1>View All Blogs</h1>
+    <h1>View All blogs</h1>
     <div class="address-bar">
-      <span>Admin/{{ pageName }}</span>
+      <span>Admin/
+
+      </span>
         </div>
     <div class="tool-bar">
       <input type="text" class="search-bar" placeholder="Search for..."  />
-      <button class="create-button" (click)="openAddNewBlogModal()">Create New Blog</button>
+      <button class="create-button" (click)="openAddNewblogModal()">Create New blog</button>
     </div>
   </div>
-
   <div class="table-container">
     <table class="table">
       <thead>
@@ -29,13 +29,13 @@
           <td><img [src]="blog.image" alt="{{ blog.name }}" class="thumbnail"></td>
           <td>{{ blog.name }}</td>
           <td>
-            <button class=" view-button" (click)="viewBlog(blog.id)">
+            <button class="icon-button view-button" (click)="viewBlog(blog.id)">
               <i class="bi bi-eye"></i> View
             </button>
-            <button class=" edit-button" (click)="editBlog(blog.id)">
+            <button class="icon-button edit-button" (click)="editBlog(blog.id)">
               <i class="bi bi-pencil"></i> Edit
             </button>
-            <button class=" delete-button" (click)="deleteBlog(blog.id)">
+            <button class="icon-button delete-button" (click)="deleteBlog(blog.id)">
               <i class="bi bi-trash"></i> Delete
             </button>
           </td>
@@ -95,4 +95,4 @@
   [isVisible]="showDeleteBlogModal"
   (delete)="confirmDelete($event)"
   (close)="closeModal()">
-</app-delete-blog>
+</app-delete-blog> 

@@ -1,19 +1,19 @@
 import { Component, Input, Output, EventEmitter } from '@angular/core';
 
 @Component({
-  selector: 'app-update-category',
-  templateUrl: './update-category.component.html',
-  styleUrls: ['./update-category.component.scss']
+  selector: 'app-update-order',
+  templateUrl: './update-order.component.html',
+  styleUrls: ['./update-order.component.scss']
 })
-export class UpdateCategoryComponent {
-  @Input() category: any = {};
+export class UpdateOrderComponent {
+  @Input() order: any = {};
   @Input() modalTitle: string = '';
   @Input() isVisible: boolean = false;
   @Output() save = new EventEmitter<any>();
   @Output() close = new EventEmitter<void>();
 
-  saveProduct() {
-    this.save.emit(this.category);
+  saveOrder() {
+    this.save.emit(this.order);
   }
 
   closeModal() {

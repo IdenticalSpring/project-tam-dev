@@ -7,8 +7,8 @@ import { Component } from '@angular/core';
 })
 export class OrderAdminPageComponent {
   orders = [
-    { id: 1, customer: 'Customer 1', total: 100, status: 'Pending', selected: false },
-    { id: 2, customer: 'Customer 2', total: 200, status: 'Shipped', selected: false }
+    { id: 1, name: 'Order 1', image: '/assets/images/order1.jpg', content: 'Content of order 1', selected: false },
+    { id: 2, name: 'Order 2', image: '/assets/images/order2.jpg', content: 'Content of order 2', selected: false }
   ];
 
   selectedOrder: any = {};
@@ -27,8 +27,8 @@ export class OrderAdminPageComponent {
   }
 
   openAddNewOrderModal() {
-    this.selectedOrder = { id: null, customer: '', total: '', status: '', selected: false };
-    this.modalTitle = 'Create Order';
+    this.selectedOrder = { id: null, name: '', image: '', content: '', selected: false };
+    this.modalTitle = 'Create order';
     this.showAddNewOrderModal = true;
   }
 
@@ -40,35 +40,34 @@ export class OrderAdminPageComponent {
   }
 
   saveOrder(order: any) {
-    if (this.modalTitle === 'Create Order') {
+    if (this.modalTitle === 'Create order') {
       order.id = this.orders.length + 1;
       this.orders.push(order);
     } else {
       const index = this.orders.findIndex(o => o.id === order.id);
-      if (index !== -1) {
-        this.orders[index] = order;
-      }
+      this.orders[index] = order;
     }
     this.closeModal();
   }
 
   viewOrder(id: number) {
     const order = this.orders.find(o => o.id === id);
+    console.log("order",order)
     this.selectedOrder = { ...order };
-    this.modalTitle = 'View Order';
+    this.modalTitle = 'View order';
     this.showDetailOrderModal = true;
   }
 
   editOrder(id: number) {
     const order = this.orders.find(o => o.id === id);
     this.selectedOrder = { ...order };
-    this.modalTitle = 'Edit Order';
+    this.modalTitle = 'Edit order';
     this.showUpdateOrderModal = true;
   }
 
   deleteOrder(id: number) {
     this.selectedOrder = this.orders.find(o => o.id === id);
-    this.modalTitle = 'Delete Order';
+    this.modalTitle = 'Delete order';
     this.showDeleteOrderModal = true;
   }
 
@@ -87,10 +86,5 @@ export class OrderAdminPageComponent {
     if (this.currentPage < this.totalPages) {
       this.currentPage++;
     }
-  }
-
-  onSearch(searchTerm: string) {
-    console.log('Search term:', searchTerm);
-    // Add your search logic here
   }
 }

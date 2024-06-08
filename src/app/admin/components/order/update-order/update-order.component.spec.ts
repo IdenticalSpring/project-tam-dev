@@ -1,18 +1,18 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
 
-import { DeleteBlogComponent  } from './delete-blog.component';
+import { UpdateOrderComponent } from './update-order.component';
 
-describe('DeleteBlogComponent ', () => {
-  let component: DeleteBlogComponent ;
-  let fixture: ComponentFixture<DeleteBlogComponent >;
+describe('UpdateOrderComponent', () => {
+  let component: UpdateOrderComponent;
+  let fixture: ComponentFixture<UpdateOrderComponent>;
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      declarations: [DeleteBlogComponent ]
+      declarations: [UpdateOrderComponent]
     })
     .compileComponents();
     
-    fixture = TestBed.createComponent(DeleteBlogComponent);
+    fixture = TestBed.createComponent(UpdateOrderComponent);
     component = fixture.componentInstance;
     fixture.detectChanges();
   });

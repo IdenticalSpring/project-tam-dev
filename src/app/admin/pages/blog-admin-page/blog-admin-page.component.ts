@@ -7,8 +7,8 @@ import { Component } from '@angular/core';
 })
 export class BlogAdminPageComponent {
   blogs = [
-    { id: 1, name: 'Blog 1', image: '/assets/images/blog1.jpg', content: 'Content of Blog 1', selected: false },
-    { id: 2, name: 'Blog 2', image: '/assets/images/blog2.jpg', content: 'Content of Blog 2', selected: false }
+    { id: 1, name: 'blog 1', image: '/assets/images/blog1.jpg', content: 'Content of blog 1', selected: false },
+    { id: 2, name: 'blog 2', image: '/assets/images/blog2.jpg', content: 'Content of blog 2', selected: false }
   ];
 
   selectedBlog: any = {};
@@ -26,9 +26,9 @@ export class BlogAdminPageComponent {
     this.blogs.forEach(blog => blog.selected = !allSelected);
   }
 
-  openAddNewBlogModal() {
+  openAddNewblogModal() {
     this.selectedBlog = { id: null, name: '', image: '', content: '', selected: false };
-    this.modalTitle = 'Create Blog';
+    this.modalTitle = 'Create blog';
     this.showAddNewBlogModal = true;
   }
 
@@ -40,43 +40,35 @@ export class BlogAdminPageComponent {
   }
 
   saveBlog(blog: any) {
-    if (this.modalTitle === 'Create Blog') {
+    if (this.modalTitle === 'Create blog') {
       blog.id = this.blogs.length + 1;
       this.blogs.push(blog);
     } else {
       const index = this.blogs.findIndex(b => b.id === blog.id);
-      if (index !== -1) {
-        this.blogs[index] = blog;
-      }
+      this.blogs[index] = blog;
     }
     this.closeModal();
   }
 
   viewBlog(id: number) {
     const blog = this.blogs.find(b => b.id === id);
-    if (blog) {
-      this.selectedBlog = { ...blog };
-      this.modalTitle = 'View Blog';
-      this.showDetailBlogModal = true;
-    }
+    console.log("blog",blog)
+    this.selectedBlog = { ...blog };
+    this.modalTitle = 'View blog';
+    this.showDetailBlogModal = true;
   }
 
   editBlog(id: number) {
     const blog = this.blogs.find(b => b.id === id);
-    if (blog) {
-      this.selectedBlog = { ...blog };
-      this.modalTitle = 'Edit Blog';
-      this.showUpdateBlogModal = true;
-    }
+    this.selectedBlog = { ...blog };
+    this.modalTitle = 'Edit blog';
+    this.showUpdateBlogModal = true;
   }
 
   deleteBlog(id: number) {
-    const blog = this.blogs.find(b => b.id === id);
-    if (blog) {
-      this.selectedBlog = blog;
-      this.modalTitle = 'Delete Blog';
-      this.showDeleteBlogModal = true;
-    }
+    this.selectedBlog = this.blogs.find(b => b.id === id);
+    this.modalTitle = 'Delete blog';
+    this.showDeleteBlogModal = true;
   }
 
   confirmDelete(id: number) {
@@ -94,9 +86,5 @@ export class BlogAdminPageComponent {
     if (this.currentPage < this.totalPages) {
       this.currentPage++;
     }
-  }
-
-  onSearch(searchTerm: string) {
-    console.log('Search term:', searchTerm);
   }
 }

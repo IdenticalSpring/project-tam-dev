@@ -17,6 +17,9 @@ export class ProductAdminPageComponent {
   showDetailProductModal: boolean = false;
   showUpdateProductModal: boolean = false;
   showDeleteProductModal: boolean = false;
+  currentPage: number = 1;
+  totalPages: number = 5;
+  pageName: string = 'products';
 
   toggleSelectAll() {
     const allSelected = this.products.every(product => product.selected);
@@ -49,6 +52,7 @@ export class ProductAdminPageComponent {
 
   viewProduct(id: number) {
     const product = this.products.find(p => p.id === id);
+    console.log("product",product)
     this.selectedProduct = { ...product };
     this.modalTitle = 'View Product';
     this.showDetailProductModal = true;
@@ -73,12 +77,14 @@ export class ProductAdminPageComponent {
   }
 
   prevPage() {
-    console.log('Previous page');
-    // Add your pagination logic here
+    if (this.currentPage > 1) {
+      this.currentPage--;
+    }
   }
 
   nextPage() {
-    console.log('Next page');
-    // Add your pagination logic here
+    if (this.currentPage < this.totalPages) {
+      this.currentPage++;
+    }
   }
 }

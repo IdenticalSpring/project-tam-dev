@@ -1,4 +1,4 @@
-import { Component, EventEmitter, Input, Output } from '@angular/core';
+import { Component, Input, Output, EventEmitter } from '@angular/core';
 
 @Component({
   selector: 'app-delete-category',
@@ -6,17 +6,17 @@ import { Component, EventEmitter, Input, Output } from '@angular/core';
   styleUrls: ['./delete-category.component.scss']
 })
 export class DeleteCategoryComponent {
-  @Input() modalTitle!: string;
-  @Input() isVisible!: boolean;
-  @Input() category: any;
-  @Output() confirmDelete = new EventEmitter<number>();
+  @Input() category: any = {};
+  @Input() modalTitle: string = '';
+  @Input() isVisible: boolean = false;
+  @Output() delete = new EventEmitter<number>();
   @Output() close = new EventEmitter<void>();
 
-  onDelete() {
-    this.confirmDelete.emit(this.category.id);
+  confirmDelete() {
+    this.delete.emit(this.category.id);
   }
 
-  onClose() {
+  closeModal() {
     this.close.emit();
   }
 }
